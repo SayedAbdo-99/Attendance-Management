@@ -1,4 +1,4 @@
-![Project Logo](https://user-images.githubusercontent.com/48133426/116291303-0a138200-a7b2-11eb-963c-5ead9628ec90.jpg)
+![Project Logo](https://github.com/SayedAbdo-99/Attendance-Management/blob/main/pro%20Icon.jpg)
 
 # Attendance Management Task💻
 The HR management system is what is used by companies to manage & organize human resources, like tracking the employee's attendance, leaves, expenses, ...etc.
