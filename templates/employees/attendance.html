@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Css -->
+    <link rel="stylesheet" href="../../static/css/styles.css">
+    <link rel="stylesheet" href="../../static/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
+    <title>Attendance</title>
+</head>
+
+<body>
+<!--Container -->
+<div class="mx-auto bg-grey-lightest">
+    <!--Screen-->
+    <div class="min-h-screen flex flex-col">
+        <!--Header Section Starts Here-->
+        <header class="bg-nav">
+            <div class="flex justify-between">
+                <div class="p-1 mx-3 inline-flex items-center">
+                 <a href="{{url_for('Login')}}">   <h1 class="text-white p-2">Logout</h1></a>
+                </div>
+            </div>
+        </header>
+        <!--/Header-->
+
+        <div class="flex flex-1">
+            <!--Main-->
+            <main class="bg-white-500 flex-1 p-3 overflow-hidden">
+
+                <div class="flex flex-col">
+                    <!-- Card Sextion Starts Here -->
+                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+                            <form method="POST">
+                                <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b" style="text-align: center;">
+                                    <h1> Wellcome {{user}} </h1>
+                                </div>
+                                <div class="inline-flex" style="display: flex;  justify-content: center;   align-items: center; height: 100px; border: 1px solid green; ">
+                                {%  if checkINCase == False  %} 
+                                    <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-l" style="height: 80px; width: 20%;" name="check" value="checkIn">
+                                        Check In
+                                    </button>
+                                {% else %}
+                                    <button class="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-r" style="height: 80px; width:20%;" name="check" value="checkOut">
+                                        Check Out
+                                    </button>
+                                {%  endif  %}
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <!-- /Cards Section Ends Here -->
+
+                    <!--Grid Form-->
+
+                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+                            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
+                                Full Table
+                            </div>
+                            <div class="p-3">
+                                <table class="table-responsive w-full rounded">
+                                    <thead>
+                                      <tr>
+                                        <th class="border w-1/7 px-4 py-2">ID</th>
+                                        <th class="border w-1/4 px-4 py-2">In Date</th>
+                                        <th class="border w-1/4 px-4 py-2">Out Date</th>
+                                        <th class="border w-1/6 px-4 py-2">Late Arrival</th>
+                                        <th class="border w-1/6 px-4 py-2">Early Leave</th>
+                                        <th class="border w-1/6 px-4 py-2">Overtime</th>
+
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for emp in empLogData %}
+                                        <tr>
+                                            <td class="border px-4 py-2">{{emp[0]}}</td>
+                                            <td class="border px-4 py-2">{{emp[1]}}</td>
+                                            <td class="border px-4 py-2">{{emp[2]}}</td>
+                                            <td class="border px-4 py-2">{{emp[3]}}</td>
+                                            <td class="border px-4 py-2">{{emp[4]}}</td>
+                                            <td class="border px-4 py-2">{{emp[5]}}</td>
+                                        </tr>
+                                        {%endfor%}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/Grid Form-->
+                </div>
+            </main>
+            <!--/Main-->
+        </div>
+        <!--Footer-->
+        <footer class="bg-grey-darkest text-white p-2">
+            <div class="flex flex-1 mx-auto">&copy; End Design</div>
+        </footer>
+        <!--/footer-->
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
