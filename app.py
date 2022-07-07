@@ -65,13 +65,13 @@ def Attenadce(empId,user):
 
     if request.method=='GET':
         if not empLogData :
-            return render_template("employees/attendance.html",user=user,checkINCase=checkINCase)
+            return render_template("hr/attendance.html",user=user,checkINCase=checkINCase)
         else:
             lastCase=empLogData[0]
             if (lastCase[1] is not None) and (lastCase[2] is None):
                 checkINCase=True
                 empLogData=empLogData[1:]
-            return render_template("employees/attendance.html",empLogData=empLogData,user=user,checkINCase=checkINCase)
+            return render_template("hr/attendance.html",empLogData=empLogData,user=user,checkINCase=checkINCase)
     elif request.method=='POST':
         if request.form['check'] == 'checkIn':
             CheckIn(empId=empId)
@@ -80,7 +80,7 @@ def Attenadce(empId,user):
             CheckOut(empId=empId)
             checkINCase = False
             empLogData=list(attendance.EmpLog(empId,mysql))
-        return render_template("employees/attendance.html",empLogData=empLogData,user=user,checkINCase=checkINCase)
+        return render_template("hr/attendance.html",empLogData=empLogData,user=user,checkINCase=checkINCase)
                 
 def CheckIn(empId):
     attendance.CheckIn(empId,mysql)
